@@ -1,6 +1,6 @@
 # Foodrgam
 
-![workflow](https://github.com/hardyitm/foodgram-project-react/actions/workflows/main.yml/badge.svg)
+![Django-app workflow](https://github.com/hardyitm/foodgram-project-react/actions/workflows/main.yml/badge.svg)
 
  Продуктовый помощник - дипломный проект курса Backend-разработки Яндекс.Практикум. Проект представляет собой онлайн-сервис и API для него. На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
 
