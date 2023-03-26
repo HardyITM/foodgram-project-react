@@ -15,7 +15,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'backend',
-    '51.250.25.224',
+    '84.201.139.210',
     'db'
 ]
 
@@ -68,20 +68,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': os.getenv('DB_ENGINE',
-    #                         default='django.db.backends.postgresql'),
-    #     'NAME': os.getenv('DB_NAME'),
-    #     'USER': os.getenv('POSTGRES_USER'),
-    #     'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-    #     'HOST': os.getenv('DB_HOST'),
-    #     'PORT': os.getenv('DB_PORT')
-    # }
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.getenv('DB_ENGINE',
+                            default='django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 
