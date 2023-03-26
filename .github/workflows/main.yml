@@ -1,4 +1,4 @@
-#deploy 11
+#deploy 12
 name: Django-app workflow
 
 on: [push]
