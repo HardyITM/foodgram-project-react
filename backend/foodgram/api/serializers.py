@@ -263,18 +263,18 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
         }
 
     def validate_ingredients(self, obj):
-        if not obj.get('ingredients'):
+        ingredients = obj
+        if not ingredients:
             raise serializers.ValidationError(
                 'Нужно указать минимум 1 ингредиент.'
             )
-        inrgedient_id_list = [item['id'] for item in obj.get('ingredients')]
+        inrgedient_id_list = [item['id'] for item in ingredients]
         unique_ingredient_id_list = set(inrgedient_id_list)
         if len(inrgedient_id_list) != len(unique_ingredient_id_list):
             raise serializers.ValidationError(
                 'Ингредиенты должны быть уникальны.'
             )
-        ingredients_list = obj
-        for ingredient in ingredients_list:
+        for ingredient in ingredients:
             if int(ingredient['amount']) <= 0:
                     raise serializers.ValidationError({
                         'amount': 'Количество ингредиента должно быть больше 0!'
