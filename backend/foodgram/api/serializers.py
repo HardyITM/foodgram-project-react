@@ -262,11 +262,7 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
             'cooking_time': {'required': True},
         }
 
-    def validate(self, obj):
-        if not obj.get('tags'):
-            raise serializers.ValidationError(
-                'Нужно указать минимум 1 тег.'
-            )
+    def validate_ingredients(self, obj):
         if not obj.get('ingredients'):
             raise serializers.ValidationError(
                 'Нужно указать минимум 1 ингредиент.'
@@ -277,12 +273,6 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Ингредиенты должны быть уникальны.'
             )
-        tags_id_list = [item['id'] for item in obj.get('tags')]
-        unique_tags_id_list = set(tags_id_list)
-        if len(tags_id_list) != len(unique_tags_id_list):
-            raise serializers.ValidationError(
-                'Тэги должны быть уникальны.'
-            )
         ingredients_list = obj
         for ingredient in ingredients_list:
             if int(ingredient['amount']) <= 0:
@@ -290,6 +280,21 @@ class RecipeCreateSerializer(serializers.ModelSerializer):
                         'amount': 'Количество ингредиента должно быть больше 0!'
                     })
         return obj
+    
+    def validate_tags(self, value):
+        tags = value
+        if not tags:
+            raise serializers.ValidationError({
+                'tags': 'Нужно указать минимум 1 тег.'
+            })
+        tags_list = []
+        for tag in tags:
+            if tag in tags_list:
+                raise serializers.ValidationError({
+                    'tags': 'Теги должны быть уникальными!'
+                })
+            tags_list.append(tag)
+        return value
 
     @transaction.atomic
     def tags_and_ingredients_set(self, recipe, tags, ingredients):
