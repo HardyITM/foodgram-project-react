@@ -124,7 +124,10 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
             limit = request.GET.get('recipes_limit')
             recipes = obj.recipes.all()
             if isinstance(limit, int):
-                recipes = recipes[:int(limit)]
+                recipes = recipes[:limit]
+            else:
+                limit = int(limit)
+                recipes = recipes[:limit]
             serializer = RecipeSerializer(recipes, many=True, read_only=True)
             return serializer.data
         except Exception as err:
