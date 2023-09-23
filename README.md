@@ -11,7 +11,7 @@
 - Проект завернут в Docker-контейнеры;
 - Образы foodgram_frontend и foodgram_backend запушены на DockerHub;
 - Реализован workflow c автодеплоем на удаленный сервер и отправкой сообщения в Telegram;
-- Проект развернут на сервере: <http://84.201.139.210/recipes> admin: email: 1@mai.ru pass: 1
+- Проект развернут на сервере: <http://84.201.139.210/recipes> (на 2023 год уже не доступен) admin: email: 1@mai.ru pass: 1
 
 ## Развертывание проекта
 
